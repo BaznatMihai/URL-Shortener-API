@@ -19,6 +19,7 @@ A simple REST API built with Python and FastAPI. It turns long links into short 
 - **SQLite + SQLAlchemy** – database
 - **PyJWT + bcrypt** – login and password security
 - **Swagger UI** – API testing
+- **Docker** – containerization
 
 ## 🚀 Run the Project
 
@@ -43,6 +44,30 @@ A simple REST API built with Python and FastAPI. It turns long links into short 
 6. Open **http://127.0.0.1:8000/docs** to try the API.
 
 The SQLite database is created automatically when the app starts.
+
+## 🐳 Run with Docker
+Make sure Docker is installed and running.
+### 1. Build the image
+```bash
+docker build -t url-shortener-api .
+```
+### 2. Run the container
+Create a `.env` file using `.env.example` and set your own secret key.
+```bash
+docker run --name url-shortener-container --env-file .env -e PYTHONPATH=/app -v url-shortener-data:/data -w /data -p 8000:8000 url-shortener-api
+```
+### 3. Open Swagger UI
+http://127.0.0.1:8000/docs
+### 4. Stop and restart the container
+Stop:
+```bash
+docker stop url-shortener-container
+```
+Restart:
+```bash
+docker start -ai url-shortener-container
+```
+The SQLite database is stored in a Docker volume, so your data is saved even after the container stops.
 
 ## 📌 API Routes
 
