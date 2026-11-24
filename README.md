@@ -16,6 +16,7 @@ A simple REST API built with Python and FastAPI. It turns long links into short 
 
 - **Python** – programming language
 - **FastAPI** – API framework
+- **Pydantic** – data validation
 - **SQLite + SQLAlchemy** – database
 - **PyJWT + bcrypt** – login and password security
 - **Swagger UI** – API testing
