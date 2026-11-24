@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.responses import RedirectResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
@@ -37,6 +38,7 @@ app = FastAPI(
     description = "An API for shortening URLs"
 )
 security = HTTPBearer()
+BASE_URL = os.getenv("BASE_URL", "http://127.0.0.1:8000")
 
 def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
     token = credentials.credentials
@@ -131,7 +133,7 @@ def shorten_url(data: URLCreate, current_user = Depends(get_current_user)):
             )
     finally:
         db.close()
-    short_url = f"http://127.0.0.1:8000/{url_nou.short_code}"
+    short_url = f"{BASE_URL.rstrip('/')}/{url_nou.short_code}"
     return {
         "id": url_nou.id,
         "original_url": url_nou.original_url,
