@@ -86,7 +86,8 @@ The SQLite database is stored in a Docker volume, so your data is saved even aft
 🔒 Some routes need a JWT token. You can log in and use **Authorize** in Swagger UI.
 
 ## 📝 Notes
-
-- Short links use `127.0.0.1:8000` while the app runs locally.
-- The `.env` file and SQLite database are not uploaded to GitHub.
-- This is a learning project built to practice backend development.
+- The base URL can be changed in the `.env` file.
+- Secret keys and database files are excluded from Git.
+- The API was manually tested using Swagger UI.
+- The application runs locally and with Docker.
+- This project was built to practice backend development.
